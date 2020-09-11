@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "loteria-personajes": {
+      "hosting": {
+        "loteria-personajes": [
+          "loteria-personajes"
+        ]
+      }
+    }
+  }
+}

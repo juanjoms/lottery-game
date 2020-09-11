@@ -1,1 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --primary-color: #673ab7;
+  --primary-alt-color: #6f42c1;
+  --link-color: #2D8AC6;
+  --link-color-alt: #1976d2;
+  --light-color: #f9f9f9;
+  --light-alt-color: #f1f1f1;
+  --gray-color: #6c757d;
+  --primary-font: Roboto,Helvetica Neue,sans-serif;
+  --light: 100;
+  --regular: 400;
+  --medium: 500;
+  --mobile-breakpoint: 767px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--primary-font);
+  font-size: 1.6rem;
+}
+
+.button {
+  padding: 0 16px;
+  border-radius: 4px;
+  transition: background-color 400ms ease;
+  cursor: pointer;
+  outline: none;
+  line-height: 28px;
+  font-size: 14px;
+  font-weight: var(--medium);
+  font-family: var(--primary-font);
+  border: 1px solid transparent;
+
+  &.large {
+    line-height: 36px;
+    font-size: 2rem;
+  }
+
+  &.primary {
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    &:hover {
+      background-color: var(--primary-alt-color);
+      border-color: var(--primary-alt-color);
+    }
+  }
+
+  &.secondary {
+    color: var(--primary-color);
+    background-color: white;
+    border-color: var(--primary-color);
+  }
+
+  &.tertiary {
+    color: var(--gray-color);
+    background-color: white;
+    border-color: var(--gray-color);
+  }
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  &:hover {
+    color: var(--link-color-alt)
+  }
+}

@@ -1,0 +1,22 @@
+<div class="home">
+
+  <button class="button secondary large" (click)="showCreateGameSection = true">Crear Juego</button>
+
+  <div class="section text-right" *ngIf="showCreateGameSection">
+    <text-field label="Nombre del Juego" [(value)]="gameName"></text-field>
+    <text-field label="Nombre del Cantor" [(value)]="cantorName"></text-field>
+    <button class="button secondary" (click)="createGame()">Continuar</button>
+  </div>
+
+  <button class="button primary large" (click)="showJoinGameSection = true">Participar en Juego</button>
+
+  <div class="section join" *ngIf="showJoinGameSection">
+    <text-field label="Nombre del Jugador" [(value)]="playerName"></text-field>
+    Elige un juego:
+  </div>
+  <div [hidden]="!showJoinGameSection">
+    <a *ngFor="let lottery of lotteryList$ | async" (click)="joinGame()" routerLink="/juego/{{lottery.id}}">
+      <list-item [text]="lottery.name"></list-item>
+    </a>
+  </div>
+</div>

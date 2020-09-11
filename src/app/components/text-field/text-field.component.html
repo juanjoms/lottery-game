@@ -1,0 +1,12 @@
+<div class="input-group">
+  <label for="name" class="float-label">{{label}}</label>
+  <input
+    type="text"
+    class="input-field"
+    autocomplete="off"
+    [(ngModel)]="value"
+    (ngModelChange)="emitValueChange()"
+    (focus)="handleFocus($event)"
+    (blur)="handleBlur($event)"/>
+  <div class="line-ripple"></div>
+</div>

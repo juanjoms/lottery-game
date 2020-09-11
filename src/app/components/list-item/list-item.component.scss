@@ -1,0 +1,10 @@
+.list-item {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background-color: var(--light-color);
+  &:hover {
+    background-color: var(--light-alt-color);
+  }
+}
