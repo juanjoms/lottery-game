@@ -1,4 +1,10 @@
 <div class="game">
-  <current-card [isCantor]="isCantor" [currentCard]="currentCard" (next)="onNextCard()"></current-card>
-  <deck></deck>
+  <div class="top-section">
+    <div class="navigation" *ngIf="isGameOver">
+      <button class="button secondary" *ngIf="isCantor" (click)="onRestart()" ><icon-redo></icon-redo> Reiniciar</button>
+      <button class="button secondary" (click)="goBack()"><icon-back></icon-back> Regresar</button>
+    </div>
+    <current-card [isCantor]="isCantor" [currentCard]="currentCard" (next)="onNextCard()"></current-card>
+  </div>
+  <deck [cards]="cards" (select)="onSelectCard($event)"></deck>
 </div>

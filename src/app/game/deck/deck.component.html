@@ -1,11 +1,7 @@
 <div class="deck">
-  <card image="img0.jpg"></card>
-  <card image="img1.jpg"></card>
-  <card image="img2.jpg"></card>
-  <card image="img3.jpg"></card>
-  <card image="img4.jpg"></card>
-  <card image="img5.jpg"></card>
-  <card image="img6.jpg"></card>
-  <card image="img7.jpg"></card>
-  <card image="img8.jpg"></card>
+  <card *ngFor="let card of cards; index as idx"
+    [image]="card.imageIdx"
+    [marked]="card.marked"
+    (select)="onSelect(idx)">
+  </card>
 </div>

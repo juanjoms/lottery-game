@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Card } from 'src/app/models/card.model';
 
 @Component({
   selector: 'card',
@@ -6,10 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  @Input() image: string;
+  @Input() image: number;
+  @Input() marked: boolean;
   @Output() select: EventEmitter<void> = new EventEmitter();
-
-  ngOnInit(): void {
-  }
-
 }

@@ -3,7 +3,7 @@ import { LotteryService } from '../lottery.service';
 import { LotteryGame } from '../models/lottery.model';
 import { Utils } from '../utils';
 import { Router } from '@angular/router';
-import { RoleService } from '../role.service';
+import { PlayerService } from '../player.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   lotteryList: LotteryGame[];
   lotteryList$: Observable<unknown>;
 
-  constructor(private lotteryService: LotteryService, private role: RoleService, private router: Router) { }
+  constructor(private lotteryService: LotteryService, private playerService: PlayerService, private router: Router) { }
 
   ngOnInit(): void {
     this.lotteryList$ = this.lotteryService.getLotteryGameList();
@@ -31,16 +31,14 @@ export class HomeComponent implements OnInit {
     const game: LotteryGame = {
       id: lotteryId,
       name: this.gameName || lotteryId,
-      cantor: this.cantorName,
-      currentCard: null,
-      participants: []
     }
     this.lotteryService.createLotteryGame(game);
-    this.role.setCantorRole(true);
+    this.playerService.setCantorRole();
+    this.playerService.setPlayerName(this.cantorName);
     this.router.navigate(['/juego', lotteryId])
   }
 
   joinGame() {
-    this.role.setCantorRole(false);
+    this.playerService.setPlayerName(this.playerName);
   }
 }

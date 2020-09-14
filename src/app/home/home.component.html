@@ -10,9 +10,9 @@
 
   <button class="button primary large" (click)="showJoinGameSection = true">Participar en Juego</button>
 
-  <div class="section join" *ngIf="showJoinGameSection">
+  <div class="section text-center" *ngIf="showJoinGameSection">
     <text-field label="Nombre del Jugador" [(value)]="playerName"></text-field>
-    Elige un juego:
+    Selecciona un juego de la lista:
   </div>
   <div [hidden]="!showJoinGameSection">
     <a *ngFor="let lottery of lotteryList$ | async" (click)="joinGame()" routerLink="/juego/{{lottery.id}}">

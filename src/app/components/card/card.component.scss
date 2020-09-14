@@ -3,12 +3,25 @@
   height: 180px;
   border: 1px solid var(--gray-color);
   padding: 10px 5px;
+  position: relative;
   .card-image {
     height: 100%;
     background-size: cover;
     background-position: center;
   }
-
+  &.chip::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 53% 53%, #fff0 35px, hsla(0, 0%, 100%, 0.75) 37px, #fff0 40px),
+    radial-gradient(ellipse at 47% 49%, #fff0 35px, hsla(27, 100%, 38%, 0.75) 37px, #fff0 40px),
+    radial-gradient(ellipse at 40% 40%, hsla(33, 100%, 64%, 0.8) 0%, hsla(27, 93%, 47%, 0.8) 100%);
+  }
   @media screen and (max-width: 767px) {
     height: 200px;
   }

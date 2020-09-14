@@ -76,3 +76,17 @@ a {
     color: var(--link-color-alt)
   }
 }
+
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+svg {
+  fill: var(--primary-color);
+  height: 15px;
+  width: 15px;
+  vertical-align: text-bottom;
+}

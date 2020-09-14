@@ -1,7 +1,7 @@
 <div class="current-card">
   <div *ngIf="!currentCard">
-    <button *ngIf="isCantor" class="button primary large" (click)="startGame()" >Iniciar juego</button>
-    <span *ngIf="!isCantor">El juego está por comenzar</span>
+    <button *ngIf="isCantor" class="button primary large" (click)="startGame()">Iniciar Juego</button>
+    <span *ngIf="!isCantor">El Juego está por comenzar</span>
   </div>
   <card *ngIf="currentCard" [image]="currentCard" (select)="onSelect()"></card>
 </div>
