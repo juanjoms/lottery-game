@@ -1,5 +1,5 @@
 export class Utils {
-  static readonly TOTAL_CARDS = 8;
+  static readonly TOTAL_CARDS = 30;
   static readonly DECK_SIZE = 9; // 3x3
 
   static generateLotteryId() {
