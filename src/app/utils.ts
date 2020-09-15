@@ -1,6 +1,6 @@
 export class Utils {
   static readonly TOTAL_CARDS = 8;
-  static readonly DECK_SIZE = 4; // 3x3
+  static readonly DECK_SIZE = 9; // 3x3
 
   static generateLotteryId() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16);
