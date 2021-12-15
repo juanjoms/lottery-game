@@ -14,7 +14,7 @@ export class AppComponent {
   public preloadImages() {
     for (let i = 0; i < Utils.TOTAL_CARDS; i += 1) {
       const img = new Image();
-      img.src = `/assets/images/${i}.jpg`;
+      img.src = `/assets/images/${i}.png`;
     }
   }
 }
