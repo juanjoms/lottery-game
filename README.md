@@ -1,4 +1,8 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/329efa45-4153-4ddd-a002-da84b89bcd58/deploy-status)](https://app.netlify.com/sites/juego-loteria/deploys)
+
 # LoteriaPersonajes
+
+Site: https://juego-loteria.netlify.app/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
 
@@ -12,7 +16,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
