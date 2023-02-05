@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessagesService {
-  constructor(private toastr: ToastrService) {}
+  constructor() {}
 
   winner(playerName: string) {
-    this.toastr.success(`${playerName} ha completado todas sus cartas`);
+    //this.toastr.success(`${playerName} ha completado todas sus cartas`, '', {preventDuplicates: true});
   }
   tiedGame() {
-    this.toastr.info('Todas las cartas han sido anunciadas');
+    //this.toastr.info('Todas las cartas han sido anunciadas');
   }
   wrongWinAttempt() {
-    this.toastr.warning ('Aún no se anuncian todas tus cartas');
+    //this.toastr.warning ('Aún no se anuncian todas tus cartas');
   }
 }
 

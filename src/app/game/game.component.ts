@@ -4,6 +4,7 @@ import { PlayerService } from '../player.service';
 import { Utils } from '../utils';
 import { LotteryService } from '../lottery.service';
 import { Subscription } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
 import { LotteryGame } from '../models/lottery.model';
 import { Card } from '../models/card.model';
 import { MessagesService } from '../messages.service';
