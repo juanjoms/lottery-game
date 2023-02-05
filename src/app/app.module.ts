@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-//import { ToastrModule } from 'ngx-toastr'
+import { ToastrModule } from 'ngx-toastr'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +38,7 @@ import { IconBackComponent, IconRedoComponent } from './components/icons/icons.c
     provideFirestore(() => getFirestore()),
     AppRoutingModule,
     FormsModule,
-    //ToastrModule.forRoot(),
+    ToastrModule.forRoot({preventDuplicates: true}),
     BrowserAnimationsModule
   ],
   providers: [],
