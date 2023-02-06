@@ -11,13 +11,10 @@ export class PlayerService {
     this.playerName = sessionStorage.getItem('name');
   }
 
-  setCantorRole() {
-    this.isCantor = true;
-    sessionStorage.setItem('cantor', 'true');
-  }
-
-  setPlayerName(name: string) {
+  savePlayer(name: string, isCantor: boolean) {
     this.playerName = name || 'Anónimo';
+    this.isCantor = isCantor;
     sessionStorage.setItem('name', this.playerName);
+    sessionStorage.setItem('cantor', `${isCantor}`);
   }
 }

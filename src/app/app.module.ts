@@ -15,7 +15,7 @@ import { GameComponent } from './game/game.component';
 import { DeckComponent } from './game/deck/deck.component';
 import { CardComponent } from './components/card/card.component';
 import { CurrentCardComponent } from './game/current-card/current-card.component';
-import { ListItemComponent } from './components/list-item/list-item.component';
+import { ListItemButtonComponent } from './components/list-item-button/list-item-button.component';
 import { IconBackComponent, IconRedoComponent } from './components/icons/icons.component';
 
 
@@ -23,7 +23,7 @@ import { IconBackComponent, IconRedoComponent } from './components/icons/icons.c
   declarations: [
     AppComponent,
     HomeComponent,
-    ListItemComponent,
+    ListItemButtonComponent,
     TextFieldComponent,
     GameComponent,
     DeckComponent,

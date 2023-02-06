@@ -1,5 +1,5 @@
 .card {
-  border: 1px solid var(--light-alt-color);
+  border: 1px solid var(--light-color);
   padding: 5px;
   position: relative;
   .card-image {
@@ -7,19 +7,34 @@
     height: 195px;
     background-size: cover;
     background-position: center;
-  }
-  &.chip::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at 53% 53%, #fff0 35px, hsla(0, 0%, 100%, 0.75) 37px, #fff0 40px),
-    radial-gradient(ellipse at 47% 49%, #fff0 35px, hsla(27, 100%, 38%, 0.75) 37px, #fff0 40px),
-    radial-gradient(ellipse at 40% 40%, hsla(33, 100%, 64%, 0.8) 0%, hsla(27, 93%, 47%, 0.8) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .poker-chip {
+      opacity: 0.95;
+      $dia: 80px;
+      $incolor: #dddddd;
+      $outcolor: #fff;
+      $bdrwidth: 12px;
+      $time: 1s;
+      width: $dia;
+      height: $dia;
+      background: $incolor;
+      border: $bdrwidth dashed $outcolor;
+      border-radius: $dia;
+      padding-top: $dia/2 - 10px;
+      transition: all linear $time;
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5), 0 0 3px 0 rgba(0, 0, 0, 0.4) inset;
+      margin: 2em auto;
+
+      &:hover {
+        animation: 3s rotate-right linear infinite;
+      }
+    }
+    @keyframes rotate-right {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   }
   @media screen and (max-width: 490px) {
     .card-image {

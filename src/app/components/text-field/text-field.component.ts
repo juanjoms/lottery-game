@@ -8,6 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class TextFieldComponent {
   @Input() label: string;
   @Input() value: string;
+  @Input() hasError: boolean;
   @Output() valueChange: EventEmitter<string> = new EventEmitter();
 
   emitValueChange(): void {

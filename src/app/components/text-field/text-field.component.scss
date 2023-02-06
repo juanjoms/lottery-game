@@ -43,4 +43,15 @@
       width: 100%
     }
   }
+  &.has-error {
+    .float-label {
+      color: var(--error-color);
+    }
+    .input-field {
+      border-bottom: 1px solid var(--error-color);
+    }
+    .line-ripple {
+      background-color: var(--error-color);
+    }
+  }
 }
