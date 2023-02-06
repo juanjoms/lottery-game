@@ -4,7 +4,6 @@ import { LotteryGame } from '../models/lottery.model';
 import { Utils } from '../utils';
 import { Router } from '@angular/router';
 import { PlayerService } from '../player.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,33 +11,61 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  showCreateGameSection: boolean;
-  showJoinGameSection: boolean;
+  isCantorPlayer: boolean;
+  isRegularPlayer: boolean;
+  isCantorFormSubmitted: boolean;
+  isRegularFormSubmitted: boolean;
   gameName: string;
   cantorName: string;
   playerName: string;
   lotteryList: LotteryGame[];
-  lotteryList$: Observable<unknown>;
+  activeGameIndex: number = -1;
 
   constructor(private lotteryService: LotteryService, private playerService: PlayerService, private router: Router) { }
 
   ngOnInit(): void {
-    this.lotteryList$ = this.lotteryService.getLotteryGameList();
+    this.lotteryService.getLotteryGameList().subscribe((lotteryList: LotteryGame[]) => {
+      this.lotteryList = lotteryList;
+    })
+  }
+
+  showCantorPlayerForm() {
+    this.isCantorPlayer = true;
+    this.isRegularPlayer = false;
+  }
+
+  showRegularPlayerForm() {
+    this.isRegularPlayer = true;
+    this.isCantorPlayer = false;
   }
 
   createGame() {
+    this.isCantorFormSubmitted = true;
+    if (!this.gameName || !this.cantorName) {
+      return;
+    }
     const lotteryId = Utils.generateLotteryId();
     const game: LotteryGame = {
       id: lotteryId,
       name: this.gameName || lotteryId,
+      created: new Date().getTime()
     }
     this.lotteryService.createLotteryGame(game);
-    this.playerService.setCantorRole();
-    this.playerService.setPlayerName(this.cantorName);
+    this.playerService.savePlayer(this.cantorName, true);
     this.router.navigate(['/juego', lotteryId])
   }
 
+  selectGame(index: number) {
+    this.activeGameIndex = index;
+  }
+
   joinGame() {
-    this.playerService.setPlayerName(this.playerName);
+    this.isRegularFormSubmitted = true;
+    if (this.activeGameIndex === -1 || !this.playerName) {
+      return;
+    }
+    this.playerService.savePlayer(this.playerName, false);
+    const lottery = this.lotteryList[this.activeGameIndex];
+    this.router.navigate([`/juego/${lottery.id}`])
   }
 }

@@ -1,22 +1,30 @@
 <div class="home">
+  <h1 class="header">LOTERÍA</h1>
+  <section class="section">
+    <button class="button secondary large" (click)="showCantorPlayerForm()">Crear Juego</button>
+    <div class="collapsable" [hidden]="!isCantorPlayer">
+      <text-field label="Nombre del Juego" [hasError]="isCantorFormSubmitted && !gameName" [(value)]="gameName"></text-field>
+      <text-field label="Nombre del Cantor" [hasError]="isCantorFormSubmitted && !cantorName" [(value)]="cantorName"></text-field>
+      <button class="button primary" (click)="createGame()">Crear</button>
+    </div>
+  </section>
 
-  <button class="button secondary large" (click)="showCreateGameSection = true">Crear Juego</button>
-
-  <div class="section text-right" *ngIf="showCreateGameSection">
-    <text-field label="Nombre del Juego" [(value)]="gameName"></text-field>
-    <text-field label="Nombre del Cantor" [(value)]="cantorName"></text-field>
-    <button class="button secondary" (click)="createGame()">Continuar</button>
-  </div>
-
-  <button class="button primary large" (click)="showJoinGameSection = true">Participar en Juego</button>
-
-  <div class="section text-center" *ngIf="showJoinGameSection">
-    <text-field label="Nombre del Jugador" [(value)]="playerName"></text-field>
-    Selecciona un juego de la lista:
-  </div>
-  <div [hidden]="!showJoinGameSection">
-    <a *ngFor="let lottery of lotteryList$ | async" (click)="joinGame()" routerLink="/juego/{{lottery.id}}">
-      <list-item [text]="lottery.name"></list-item>
-    </a>
-  </div>
+  <section class="section">
+    <button class="button primary large" (click)="showRegularPlayerForm()">Participar en Juego</button>
+    <div class="collapsable" [hidden]="!isRegularPlayer">
+      <text-field label="Nombre del Jugador" [hasError]="isRegularFormSubmitted && !playerName"  [(value)]="playerName"></text-field>
+      <h3 class="game-selection">Selecciona juego:</h3>
+      <div class="list" [class.has-error]="isRegularFormSubmitted && activeGameIndex === -1">
+        <list-item-button *ngFor="let lottery of lotteryList; let idx = index"
+          [selected]="idx === activeGameIndex"
+          (selectItem)="activeGameIndex = idx">
+          <div class="list-item-content">
+            <span>{{lottery.name}}</span>
+            <span class="date">{{lottery.created | date:'MMM dd, Y'}}</span>
+          </div>
+        </list-item-button>
+      </div>
+      <button class="button primary" (click)="joinGame()">Entrar</button>
+    </div>
+  </section>
 </div>

@@ -20,6 +20,7 @@ export class GameComponent implements OnInit, OnDestroy {
   playerName: string;
   currentCard: string;
   pastCards: {[index: number]: boolean} = {};
+  shuffledCards: number[];
   cards: Card[];
   cardsCounter: number = 0;
   isGameOver: boolean;
@@ -37,6 +38,7 @@ export class GameComponent implements OnInit, OnDestroy {
       .generateDeck()
       .map(imageIdx => ({imageIdx, marked: false}));
 
+    this.shuffledCards = Utils.shuffle([...Array(Utils.TOTAL_CARDS).keys()]);
     this.gameId = this.route.snapshot.params.id;
     this.updatesSubscription = this.lotteryService.getGameUpdates(this.gameId).subscribe((lottery: LotteryGame) => {
       this.currentCard = lottery.currentCard;
@@ -67,8 +69,7 @@ export class GameComponent implements OnInit, OnDestroy {
       this.lotteryService.endGame(this.gameId);
       return;
     }
-    const currentCard: number = Utils.getRandNonRepeatedCard(this.pastCards);
-    this.cardsCounter += 1;
+    const currentCard: number = this.shuffledCards[this.cardsCounter++];
     this.lotteryService.updateCurrentCard(this.gameId, `${currentCard}`);
   }
 

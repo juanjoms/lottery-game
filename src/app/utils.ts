@@ -6,14 +6,6 @@ export class Utils {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16);
   }
 
-  static getRandNonRepeatedCard(currentCards: {[idx: number]: boolean}) {
-    let rand: number
-    do {
-      rand = this.getRand(this.TOTAL_CARDS);
-    } while (currentCards[rand]);
-    return rand;
-  }
-
   static generateDeck(): number[] {
     const shuffledCards = this.shuffle([...Array(this.TOTAL_CARDS).keys()]);
     const deck = shuffledCards.slice(0, this.DECK_SIZE);
