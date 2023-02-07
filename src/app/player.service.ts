@@ -8,7 +8,7 @@ export class PlayerService {
   playerName: string;
   constructor() {
     this.isCantor = sessionStorage.getItem('cantor') === 'true';
-    this.playerName = sessionStorage.getItem('name');
+    this.playerName = sessionStorage.getItem('name') || 'Anónimo'
   }
 
   savePlayer(name: string, isCantor: boolean) {

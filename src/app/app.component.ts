@@ -13,8 +13,11 @@ export class AppComponent {
 
   public preloadImages() {
     for (let i = 0; i < Utils.TOTAL_CARDS; i += 1) {
-      const img = new Image();
-      img.src = `/assets/images/${i}.png`;
+      const link = document.createElement("link");
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = `/assets/images/${i}.png`;
+      document.head.appendChild(link);
     }
   }
 }
